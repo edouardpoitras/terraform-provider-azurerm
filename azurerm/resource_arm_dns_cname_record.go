@@ -95,7 +95,7 @@ func resourceArmDnsCNameRecordCreateUpdate(d *schema.ResourceData, meta interfac
 
 	eTag := ""
 	ifNoneMatch := "" // set to empty to allow updates to records after creation
-	if _, err := client.CreateOrUpdate(ctx, resGroup, zoneName, name, dns.CNAME, parameters, eTag, ifNoneMatch); serr != nil {
+	if _, err := client.CreateOrUpdate(ctx, resGroup, zoneName, name, dns.CNAME, parameters, eTag, ifNoneMatch); err != nil {
 		return fmt.Errorf("Error creating/updating DNS CNAME Record %q (Zone %q / Resource Group %q): %s", name, zoneName, resGroup, err)
 	}
 
